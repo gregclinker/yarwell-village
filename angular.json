@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "yarwell-village"
+  "defaultProject": "yarwell-village",
+  "cli": {
+    "analytics": "41b8985a-5b7f-41a6-ae0d-870bc39b1f81"
+  }
 }

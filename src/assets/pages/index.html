@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="yarwell">
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68537201-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  <meta name="viewport" content="width=100, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta charset="utf-8" />
+  <link rel="image_src" href="http://www.yarwell.com/images/logo-header-large.png" / ><!--formatted-->
+  <meta name="description" content="Yarwell is a small village in East Northamptonshire, about 10 miles West of Peterborough and close to the A1." />
+  <meta name="author" content="Greg Clinker" />
+  <title>Yarwell Village</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link data-require="bootstrap-css@3.1.*" data-semver="3.1.1" rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <script data-require="angular.js@1.2.*" data-semver="1.2.28" src="https://code.angularjs.org/1.2.28/angular.js"></script>
+  <script data-require="ui-bootstrap@0.12.0" data-semver="0.12.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+  <link href="http://fonts.googleapis.com/css?family=Vollkorn:400,700" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+  <script src="js/app.js"></script>
+</head>
+
+<body class="home" ng-controller="MainCtrl">
+  <header>
+    <div class="row">
+      <div class="two columns menuColumn" ng-class="{active: menuToggle}">
+        <div ng-click="menuToggle = !menuToggle" class="menuToggle">
+          <div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <a href="#">{{menuToggle ? "Close" : "Menu"}}</a>
+        </div>
+        <nav class="menu">
+          <ul>
+            <li><a href="#" ng-click="pageToShow='history'; menuToggle = !menuToggle">History</a></li>
+            <li><a href="#" ng-click="pageToShow='villagehall'; menuToggle = !menuToggle">Village Hall</a></li>
+            <li><a href="#" ng-click="pageToShow='business'; menuToggle = !menuToggle">Businesses</a></li>
+            <li><a href="#" ng-click="pageToShow='local'; menuToggle = !menuToggle">Services</a></li>
+            <li><a href="#" ng-click="pageToShow='pub'; menuToggle = !menuToggle">Pub</a></li>
+            <li><a href="#" ng-click="pageToShow='church'; menuToggle = !menuToggle">Church</a></li>
+            <li><a href="#" ng-click="pageToShow='schools'; menuToggle = !menuToggle">Schools</a></li>
+            <li><a href="#" ng-click="pageToShow='council'; menuToggle = !menuToggle">Parish Council</a></li>
+            <li><a href="#" ng-click="pageToShow='band'; menuToggle = !menuToggle">Band</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="two columns facebookColumn">
+        <a target="_blank" href="https://www.facebook.com/pages/Yarwell-Village/1479648902331414">
+          <img src="images/facebook.png" height="42" width="42" />
+        </a>
+        <a target="_blank" href="https://twitter.com/YarwellVillage">
+          <img src="images/twitter.png" height="42" width="42" />
+        </a>
+      </div>
+      <div class="six columns logoColumn">
+        <div class="headerLogo">
+          <a href="index.html"></a>
+        </div>
+      </div>
+      <div class="two columns directionsColumn">
+        <a href="https://www.google.com/maps/dir/Current+Location/52.5646884,-0.424955">Get Directions</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="banner">
+      <div class="slideshow" ng-show="pageToShow=='home'">
+        <carousel interval="myInterval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img class="image-circle" ng-src="{{slide.image}}" style="margin:auto;" />
+          </slide>
+        </carousel>
+      </div>
+      <div class="strip" ng-show="pageToShow!='home'"></div>
+    </section>
+    <section class="content">
+      <div class="row breadcrumbs" ng-show="pageToShow!='home'">
+        <div class="twelve columns">
+          <a href="#" ng-click="pageToShow='home'">Home</a>
+          <span>/</span> {{pageToShow}}
+        </div>
+      </div>
+      <div ng-include="pageToShow+'.html'"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="row">
+      <div class="eight columns menuColumn">
+        <nav class="menu">
+          <ul>
+            <li><a href="#" ng-click="pageToShow='history'">History</a></li>
+            <li><a href="#" ng-click="pageToShow='villagehall'">Village Hall</a></li>
+            <li><a href="#" ng-click="pageToShow='business'">Businesses</a></li>
+          </ul>
+          <ul>
+            <li><a href="#" ng-click="pageToShow='local'">Services</a></li>
+            <li><a href="#" ng-click="pageToShow='pub'">Pub</a></li>
+            <li><a href="#" ng-click="pageToShow='church'">Church</a></li>
+          </ul>
+          <ul>
+            <li><a href="#" ng-click="pageToShow='schools'">Schools</a></li>
+            <li><a href="#" ng-click="pageToShow='council'">Parish Council</a></li>
+            <li><a href="#" ng-click="pageToShow='band'">Band</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="four columns contactColumn">
+        <img src="images/logo-footer.png" />
+        <div class="contactLinks">
+          <a class="email" target="_top" href="mailto:yarwellpc@btinternet.com">Parish Council</a>
+          <a class="email" target="_top" href="mailto:yarwellnews@gmail.com">Newsletter</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns termsColumn">
+        <a class="email" target="_top" href="mailto:webmaster@yarwell.com">get involved in the website</a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
