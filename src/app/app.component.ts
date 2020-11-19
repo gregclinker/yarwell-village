@@ -12,6 +12,7 @@ import {Image} from 'angular-responsive-carousel';
 export class AppComponent implements OnInit {
   title = 'yarwell-village';
 
+  menu: Menu;
   menuItems: MenuItem[];
   images: Image[];
   selectedMenu: MenuItem;
@@ -20,27 +21,30 @@ export class AppComponent implements OnInit {
 
   constructor(menu: Menu, slideShow: SlideShow) {
     this.menuToggle = false;
+    this.menu = menu;
     this.menuItems = menu.menuItems;
     this.images = slideShow.images;
     this.selectedMenu = this.menuItems[0];
     this.pageContent = this.selectedMenu.htmlContent;
-    console.log('AppComponent constr');
   }
 
   ngOnInit(): void {
     this.pageContent = this.selectedMenu.htmlContent;
   }
 
-  onSelect(menuItem: MenuItem): void {
+  setPageByMenu(menuItem: MenuItem): void {
     this.menuToggle = !this.menuToggle;
     this.selectedMenu = menuItem;
     this.pageContent = this.selectedMenu.htmlContent;
-    console.log(menuItem.name + ', page=' + menuItem.htmlFile + ', html=' + menuItem.htmlContent);
   }
 
   home(): void {
-    this.selectedMenu = this.menuItems[0];
-    this.pageContent = this.selectedMenu.htmlContent;
-    console.log(this.selectedMenu.name + ', page=' + this.selectedMenu.htmlFile + ', html=' + this.selectedMenu.htmlContent);
+    this.setPageByMenu(this.menuItems[0]);
+    this.menuToggle = false;
+  }
+
+  setPageByMenuName(name: string): void {
+    this.setPageByMenu(this.menu.getByName(name));
+    this.menuToggle = false;
   }
 }

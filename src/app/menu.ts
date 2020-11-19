@@ -7,6 +7,8 @@ import {Injectable} from '@angular/core';
 export class Menu {
 
   menuItems: MenuItem[];
+  private menuMap = new Map();
+
   private httpClient: HttpClient;
 
   constructor(http: HttpClient) {
@@ -28,8 +30,12 @@ export class Menu {
     for (const menuItem of this.menuItems) {
       this.httpClient.get(menuItem.htmlFile, {responseType: 'text'})
         .subscribe(content => menuItem.htmlContent = content);
-      console.log('Menu menuItem=' + menuItem.htmlContent);
+      this.menuMap.set(menuItem.name, menuItem);
     }
+  }
+
+  getByName(name: string): MenuItem {
+    return this.menuMap.get(name);
   }
 }
 

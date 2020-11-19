@@ -14,7 +14,7 @@
       <nav class="menu">
         <ul>
           <li *ngFor="let menuItem of menuItems" [class.selected]="menuItem === selectedMenu">
-            <a *ngIf="menuItem.name != 'Home'" href="#" (click)="onSelect(menuItem)">{{menuItem.name}}</a>
+            <a *ngIf="menuItem.name != 'Home'" href="#" (click)="setPageByMenu(menuItem)">{{menuItem.name}}</a>
           </li>
         </ul>
       </nav>
@@ -58,19 +58,19 @@
     <div class="eight columns menuColumn">
       <nav class="menu">
         <ul>
-          <li><a href="#" ng-click="pageToShow='history'">History</a></li>
-          <li><a href="#" ng-click="pageToShow='villagehall'">Village Hall</a></li>
-          <li><a href="#" ng-click="pageToShow='business'">Businesses</a></li>
+          <li><a href="#" (click)="setPageByMenuName('History')">History</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Village Hall')">Village Hall</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Businesses')">Businesses</a></li>
         </ul>
         <ul>
-          <li><a href="#" ng-click="pageToShow='local'">Services</a></li>
-          <li><a href="#" ng-click="pageToShow='pub'">Pub</a></li>
-          <li><a href="#" ng-click="pageToShow='church'">Church</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Services')">Services</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Pub')">Pub</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Church')">Church</a></li>
         </ul>
         <ul>
-          <li><a href="#" ng-click="pageToShow='schools'">Schools</a></li>
-          <li><a href="#" ng-click="pageToShow='council'">Parish Council</a></li>
-          <li><a href="#" ng-click="pageToShow='band'">Band</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Schools')">Schools</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Parish Council')">Parish Council</a></li>
+          <li><a href="#" (click)="setPageByMenuName('Band')">Band</a></li>
         </ul>
       </nav>
     </div>
