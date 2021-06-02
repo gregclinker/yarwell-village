@@ -38,7 +38,7 @@
 <main>
   <section class="banner">
     <div *ngIf="selectedMenu.name == 'Home'" class="slideshow">
-      <carousel [images]="images" [autoplay]="true" [loop]="true" [cellsToShow]="1" [height]="476"></carousel>
+      <carousel [images]="images" [autoplay]="true" [loop]="true" [cellsToShow]="1" [pauseOnHover]="false" [height]="476"></carousel>
     </div>
     <div class="strip"></div>
   </section>
